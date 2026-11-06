@@ -104,7 +104,9 @@ export default function App() {
                 <p className="eyebrow">The collection</p>
                 <h2 id="results-heading">{filteredProducts.length} {filteredProducts.length === 1 ? 'product' : 'products'}</h2>
               </div>
-              <p aria-live="polite">Page {pageCount ? page : 0} of {pageCount}</p>
+              {pageCount > 0 && (
+                <p aria-live="polite">Page {page} of {pageCount}</p>
+              )}
             </div>
             {visibleProducts.length ? <ProductGrid products={visibleProducts} onView={openProduct} /> : <EmptyState onClear={clearFilters} />}
             <Pagination page={page} pageCount={pageCount} onPage={changePage} />
